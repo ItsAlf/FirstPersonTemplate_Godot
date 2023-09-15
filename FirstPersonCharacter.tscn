@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc1vk68nplduu"]
+
+[ext_resource type="Script" path="res://FirstPersonCharacter.gd" id="1_dpkoi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a3vrq"]
+
+[node name="FirstPersonCharacter" type="CharacterBody3D"]
+script = ExtResource("1_dpkoi")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_a3vrq")
+
+[node name="Camera3d" type="Camera3D" parent="CollisionShape3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.588207, 0.254763)
+current = true
+fov = 90.0

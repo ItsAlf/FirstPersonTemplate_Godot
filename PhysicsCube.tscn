@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpxjbr87lvbla"]
+
+[ext_resource type="ArrayMesh" uid="uid://c41anjy46e2lg" path="res://beveled_cube_mesh.res" id="1_dvt3v"]
+[ext_resource type="Material" uid="uid://mum3c4t6m3ir" path="res://example_material_3.tres" id="1_nj66t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n2mhq"]
+
+[node name="PhysicsCube" type="RigidBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_dvt3v")
+surface_material_override/0 = ExtResource("1_nj66t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_n2mhq")
