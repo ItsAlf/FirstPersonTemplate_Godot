@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bc1vk68nplduu"]
 
-[ext_resource type="Script" path="res://FirstPersonCharacter.gd" id="1_dpkoi"]
+[ext_resource type="Script" path="res://characters/FirstPersonCharacter.gd" id="1_dpkoi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a3vrq"]
 

@@ -1,9 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://g7bgca7hx8ue"]
+[gd_scene load_steps=10 format=3 uid="uid://g7bgca7hx8ue"]
 
-[ext_resource type="Material" uid="uid://byqxfgupm2vws" path="res://example_material.tres" id="1_5kgcd"]
-[ext_resource type="PackedScene" uid="uid://bc1vk68nplduu" path="res://FirstPersonCharacter.tscn" id="1_ff38a"]
-[ext_resource type="PackedScene" uid="uid://cpxjbr87lvbla" path="res://PhysicsCube.tscn" id="2_h5txg"]
-[ext_resource type="Material" uid="uid://cq1die0om6nk1" path="res://example_material_2.tres" id="2_lrswd"]
+[ext_resource type="Texture2D" uid="uid://c416ulfjxmu2h" path="res://materials/tex_grid.png" id="1_tq7js"]
+[ext_resource type="PackedScene" uid="uid://bc1vk68nplduu" path="res://characters/FirstPersonCharacter.tscn" id="2_c04k4"]
+[ext_resource type="PackedScene" uid="uid://cpxjbr87lvbla" path="res://level_elements/physics_cube/PhysicsCube.tscn" id="3_0vay1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vuq63"]
+albedo_color = Color(0.643137, 0.643137, 0.643137, 1)
+albedo_texture = ExtResource("1_tq7js")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7tmoc"]
+albedo_color = Color(0.407843, 0.407843, 0.407843, 1)
+albedo_texture = ExtResource("1_tq7js")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ckcsc"]
 
@@ -14,15 +27,13 @@ sky_material = SubResource("ProceduralSkyMaterial_ckcsc")
 background_mode = 2
 sky = SubResource("Sky_87j6g")
 ssao_enabled = true
-ssil_enabled = true
 ssil_normal_rejection = 0.0
 sdfgi_enabled = true
 glow_enabled = true
 glow_bloom = 0.03
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.0387
-volumetric_fog_ambient_inject = 1.04
-volumetric_fog_sky_affect = 0.344
+volumetric_fog_density = 0.01
+volumetric_fog_sky_affect = 0.1
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ichex"]
 
@@ -33,38 +44,38 @@ use_collision = true
 
 [node name="CsgBox3d" type="CSGBox3D" parent="CsgCombiner3d"]
 size = Vector3(24, 8, 24)
-material = ExtResource("1_5kgcd")
+material = SubResource("StandardMaterial3D_vuq63")
 
 [node name="CsgBox3d6" type="CSGBox3D" parent="CsgCombiner3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
 operation = 2
 snap = 0.0001
 size = Vector3(22, 6, 22)
-material = ExtResource("1_5kgcd")
+material = SubResource("StandardMaterial3D_vuq63")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CsgCombiner3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.3, -7)
 size = Vector3(3, 1.6, 8)
-material = ExtResource("2_lrswd")
+material = SubResource("StandardMaterial3D_7tmoc")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="CsgCombiner3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -3)
 polygon = PackedVector2Array(-2, 0, 1, 1.6, 1, 1.6, 1, 0)
 depth = 2.0
-material = ExtResource("2_lrswd")
+material = SubResource("StandardMaterial3D_7tmoc")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CsgCombiner3d"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.3, 7)
 size = Vector3(3, 1.6, 8)
-material = ExtResource("2_lrswd")
+material = SubResource("StandardMaterial3D_7tmoc")
 
 [node name="CSGPolygon3D2" type="CSGPolygon3D" parent="CsgCombiner3d"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.5, 0.5, 3)
 polygon = PackedVector2Array(-2, 0, 1, 1.6, 1, 1.6, 1, 0)
 depth = 2.0
-material = ExtResource("2_lrswd")
+material = SubResource("StandardMaterial3D_7tmoc")
 
-[node name="FirstPersonCharacter" parent="." instance=ExtResource("1_ff38a")]
+[node name="FirstPersonCharacter" parent="." instance=ExtResource("2_c04k4")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1.5, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -78,61 +89,61 @@ shadow_enabled = true
 [node name="CubeGroup" type="Node3D" parent="."]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 5.825, 1, -7.9126)
 
-[node name="PhysicsCube5" parent="CubeGroup" instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube5" parent="CubeGroup" instance=ExtResource("3_0vay1")]
 
-[node name="PhysicsCube6" parent="CubeGroup" instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube6" parent="CubeGroup" instance=ExtResource("3_0vay1")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -0.777821, 1, 0.212134)
 
-[node name="PhysicsCube7" parent="CubeGroup" instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube7" parent="CubeGroup" instance=ExtResource("3_0vay1")]
 transform = Transform3D(0.173648, 0, 0.984807, 0, 1, 0, -0.984807, 0, 0.173648, -1.48493, 0, -0.353551)
 
-[node name="PhysicsCube8" parent="CubeGroup" instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube8" parent="CubeGroup" instance=ExtResource("3_0vay1")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -1.06066, 0, 1.06066)
 
 [node name="CubeGroup2" type="Node3D" parent="."]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -8.375, 1, 0.687404)
 
-[node name="PhysicsCube5" parent="CubeGroup2" instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube5" parent="CubeGroup2" instance=ExtResource("3_0vay1")]
 
-[node name="PhysicsCube6" parent="CubeGroup2" instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube6" parent="CubeGroup2" instance=ExtResource("3_0vay1")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -0.77782, 1, 0.212133)
 
-[node name="PhysicsCube7" parent="CubeGroup2" instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube7" parent="CubeGroup2" instance=ExtResource("3_0vay1")]
 transform = Transform3D(0.173648, 0, 0.984807, 0, 1, 0, -0.984807, 0, 0.173648, -1.48493, 0, -0.353551)
 
-[node name="PhysicsCube8" parent="CubeGroup2" instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube8" parent="CubeGroup2" instance=ExtResource("3_0vay1")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -1.06066, 0, 1.06066)
 
 [node name="CubeGroup3" type="Node3D" parent="."]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -6.175, 1, 6.0874)
 
-[node name="PhysicsCube5" parent="CubeGroup3" instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube5" parent="CubeGroup3" instance=ExtResource("3_0vay1")]
 
-[node name="PhysicsCube6" parent="CubeGroup3" instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube6" parent="CubeGroup3" instance=ExtResource("3_0vay1")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -0.777821, 1, 0.212134)
 
-[node name="PhysicsCube7" parent="CubeGroup3" instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube7" parent="CubeGroup3" instance=ExtResource("3_0vay1")]
 transform = Transform3D(0.173648, 0, 0.984807, 0, 1, 0, -0.984807, 0, 0.173648, -1.48493, 0, -0.353551)
 
-[node name="PhysicsCube8" parent="CubeGroup3" instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube8" parent="CubeGroup3" instance=ExtResource("3_0vay1")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -1.06066, 0, 1.06066)
 
 [node name="CubeGroup4" type="Node3D" parent="."]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 9.825, 1, -2.9126)
 
-[node name="PhysicsCube5" parent="CubeGroup4" instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube5" parent="CubeGroup4" instance=ExtResource("3_0vay1")]
 
-[node name="PhysicsCube6" parent="CubeGroup4" instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube6" parent="CubeGroup4" instance=ExtResource("3_0vay1")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -0.777821, 1, 0.212134)
 
-[node name="PhysicsCube7" parent="CubeGroup4" instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube7" parent="CubeGroup4" instance=ExtResource("3_0vay1")]
 transform = Transform3D(0.173648, 0, 0.984807, 0, 1, 0, -0.984807, 0, 0.173648, -1.48493, 0, -0.353551)
 
-[node name="PhysicsCube8" parent="CubeGroup4" instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube8" parent="CubeGroup4" instance=ExtResource("3_0vay1")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -1.06066, 0, 1.06066)
 
-[node name="PhysicsCube" parent="." instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube" parent="." instance=ExtResource("3_0vay1")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 5, 1, -5)
 
-[node name="PhysicsCube2" parent="." instance=ExtResource("2_h5txg")]
+[node name="PhysicsCube2" parent="." instance=ExtResource("3_0vay1")]
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 0.3, 2.6, 4)

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cvm0c4t2qjhjh"
-path="res://.godot/imported/beveled_cube.blend-046d5037964cd93929f8c5372c330070.scn"
+path="res://.godot/imported/beveled_cube.blend-1c25fe901603b1a47b4e2117d935f6ee.scn"
 
 [deps]
 
-source_file="res://beveled_cube.blend"
-dest_files=["res://.godot/imported/beveled_cube.blend-046d5037964cd93929f8c5372c330070.scn"]
+source_file="res://level_elements/physics_cube/beveled_cube.blend"
+dest_files=["res://.godot/imported/beveled_cube.blend-1c25fe901603b1a47b4e2117d935f6ee.scn"]
 
 [params]
 

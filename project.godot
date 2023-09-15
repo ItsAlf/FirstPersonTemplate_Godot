@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="First Person Template"
-run/main_scene="res://FirstPersonMap.tscn"
+run/main_scene="res://maps/FirstPersonMap.tscn"
 config/features=PackedStringArray("4.1")
 config/icon="res://icon.svg"
 

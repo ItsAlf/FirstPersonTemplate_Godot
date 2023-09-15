@@ -18,6 +18,7 @@ var viewrotation_y = 0.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+# Toggle mouse capture on escape to easily quit game/free mouse
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
