@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://g7bgca7hx8ue"]
+[gd_scene load_steps=11 format=3 uid="uid://g7bgca7hx8ue"]
 
 [ext_resource type="Texture2D" uid="uid://c416ulfjxmu2h" path="res://materials/tex_grid.png" id="1_tq7js"]
 [ext_resource type="PackedScene" uid="uid://bc1vk68nplduu" path="res://characters/FirstPersonCharacter.tscn" id="2_c04k4"]
 [ext_resource type="PackedScene" uid="uid://cpxjbr87lvbla" path="res://level_elements/physics_cube/PhysicsCube.tscn" id="3_0vay1"]
+[ext_resource type="PackedScene" uid="uid://cw3b7doepylcf" path="res://level_elements/lamp/lamp_scene.tscn" id="4_doyvx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vuq63"]
 albedo_color = Color(0.643137, 0.643137, 0.643137, 1)
@@ -147,3 +148,6 @@ transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 5, 1, -5)
 
 [node name="PhysicsCube2" parent="." instance=ExtResource("3_0vay1")]
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 0.3, 2.6, 4)
+
+[node name="lamp_scene" parent="." instance=ExtResource("4_doyvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12134, 0.5, 1.29549)

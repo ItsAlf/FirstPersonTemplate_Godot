@@ -15,6 +15,9 @@ var viewrotation_y = 0.0
 @onready var camera := $CollisionShape3d/Camera3d
 @onready var capsule := $CollisionShape3d
 
+func _ready():
+	camera.shake(-1.0, 0.02, 0.3, 0.2)
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 

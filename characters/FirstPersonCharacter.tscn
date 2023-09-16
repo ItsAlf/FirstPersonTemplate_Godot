@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bc1vk68nplduu"]
+[gd_scene load_steps=5 format=3 uid="uid://bc1vk68nplduu"]
 
 [ext_resource type="Script" path="res://characters/FirstPersonCharacter.gd" id="1_dpkoi"]
+[ext_resource type="Script" path="res://characters/shake.gd" id="2_kllwo"]
+[ext_resource type="Script" path="res://characters/interact_raycast.gd" id="3_tuabp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a3vrq"]
 
@@ -14,3 +16,31 @@ shape = SubResource("CapsuleShape3D_a3vrq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.588207, 0.254763)
 current = true
 fov = 90.0
+script = ExtResource("2_kllwo")
+
+[node name="RayCast3D" type="RayCast3D" parent="CollisionShape3d/Camera3d"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.416905)
+target_position = Vector3(0, -2.095, 0)
+script = ExtResource("3_tuabp")
+
+[node name="InteractPrompt" type="Control" parent="CollisionShape3d/Camera3d/RayCast3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CollisionShape3d/Camera3d/RayCast3D/InteractPrompt"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 537.0
+offset_top = 547.0
+offset_right = -533.0
+offset_bottom = -60.0
+text = "Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
